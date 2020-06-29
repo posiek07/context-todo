@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import { TodoListContext } from "../context/context-store";
+import { TodoListContext } from "../contexts/todo-context";
+import { Action } from "../reducers/TodoReducer";
 
 const TodoItem = (props) => {
-  const { deleteTodo, toggleTodo } = useContext(TodoListContext);
+  const { todos, dispatch } = useContext(TodoListContext);
 
     useEffect(() => {
         console.log('TodoItem rendered')
@@ -12,6 +13,21 @@ const TodoItem = (props) => {
         }
     }, [])
   
+const deleteTodo = (id) => {
+  console.log(id)
+  dispatch({
+    type: Action.REMOVE_TODO,
+    id: id
+  })
+}
+
+const toggleTodo = (id) => {
+  dispatch({
+    type: Action.STATUS_TODO,
+    id: id
+  })
+}
+
   return (
     <li className="list-group-item">
       <div>{props.name}</div>

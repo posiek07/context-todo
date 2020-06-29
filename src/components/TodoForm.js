@@ -2,17 +2,28 @@ import React, {useContext, useState} from 'react'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
-import { TodoListContext } from '../context/context-store'
+import { TodoListContext } from '../contexts/todo-context'
+import { Action } from '../reducers/TodoReducer'
+import {v1 as uuid} from 'uuid'
 
 const TodoForm = () => {
 
-
+    const { dispatch } = useContext(TodoListContext)
     const [title, setTitle] = useState('')
-    const { addTodo } = useContext(TodoListContext)
 
     const handleAddTodo = (event) => {
         event.preventDefault()
-        addTodo(title)
+        
+        dispatch({
+          type: Action.ADD_TODO,
+          todo: {
+            title: title,
+            id: uuid(),
+            status: true,
+            createdAt: new Date(),
+          }
+        })
+
         setTitle('')
     }
 

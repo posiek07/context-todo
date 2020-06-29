@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import {TodoListContext} from '../context/context-store'
+import React, { useContext } from 'react'
+import {TodoListContext} from '../contexts/todo-context'
 import TodoItem from './TodoItem'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import  './TodoList.css'
@@ -8,6 +8,8 @@ import  './TodoList.css'
 
 const TodoList = () => {
     const { todos } = useContext(TodoListContext)
+
+    console.log(todos)
     return (
         <div>
             <div>
