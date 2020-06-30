@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {NavLink} from 'react-router-dom'
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -10,13 +10,13 @@ function Navbar() {
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item active">
-        <a className="nav-link" href="#">Tasks<span className="sr-only">(current)</span></a>
+        <NavLink className="nav-link" to="/">Tasks<span className="sr-only">(current)</span></NavLink>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Calendar</a>
+        <NavLink className="nav-link" to="/calendar">Calendar</NavLink>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">My Notes</a>
+        <NavLink className="nav-link" to='/mynotes'>My Notes</NavLink>
       </li>
       <li className="nav-item">
         <a className="nav-link disabled" href="#">Disabled</a>

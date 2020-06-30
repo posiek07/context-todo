@@ -1,8 +1,9 @@
-import { db } from './firebase.config'
+import { db, serverTimestamp } from './firebase.config'
 
 const collection = 'collection'
 
-console.log(db)
+console.log(serverTimestamp)
+
 
 export const addTaskRequest = async (todo) => {
     return await db.collection(collection)

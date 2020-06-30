@@ -15,3 +15,4 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   export const db = firebase.firestore()
+  export const serverTimestamp = firebase.firestore.Timestamp.fromDate(new Date());

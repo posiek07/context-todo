@@ -1,4 +1,5 @@
 import {addTaskRequest, removeTaskRequest, changeStatusRequest} from '../firebase/Firebase'
+import { serverTimestamp } from '../firebase/firebase.config'
 
 
 export const Action = {
@@ -11,11 +12,9 @@ export const Action = {
 export const todoReducer = (state, action) => {
     switch (action.type) {
         case Action.GET_ALL_TODOS: {
-            
             return action.res
         }
         case Action.ADD_TODO: {
-            
             addTaskRequest(action.todo)
             return [...state, action.todo]
         }
@@ -30,7 +29,8 @@ export const todoReducer = (state, action) => {
             debugger
             newArr[foundIndex] = {
                 ...newArr[foundIndex],
-                status: !newArr[foundIndex].status
+                status: !newArr[foundIndex].status,
+                createdAt: action.timestamp
             }
             console.log(newArr)
             changeStatusRequest(action.id, newArr[foundIndex])

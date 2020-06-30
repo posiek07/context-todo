@@ -8,8 +8,9 @@ const TodoListContextProvider = props => {
 
 
   const [todos, dispatch] = useReducer(todoReducer, [])
-  console.log(todos)
+ 
   useEffect(() => {
+    console.log('TODOCONTEXT')
     getTasksRequest().then(res=>{
       dispatch({
         type: Action.GET_ALL_TODOS,

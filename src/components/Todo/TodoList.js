@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import {TodoListContext} from '../contexts/todo-context'
+import {TodoListContext} from '../../contexts/todo-context'
 import TodoItem from './TodoItem'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import  './TodoList.css'
@@ -9,6 +9,8 @@ import  './TodoList.css'
 const TodoList = () => {
     const { todos } = useContext(TodoListContext)
 
+
+    debugger
     console.log(todos)
     return (
         <div>
@@ -22,6 +24,7 @@ const TodoList = () => {
                     key = {todo.id}
                     name={todo.title}
                     id={todo.id}
+                    createdAt={todo.createdAt}
                     status={todo.status}
                     /></CSSTransition> : null 
                 )}
@@ -45,6 +48,7 @@ const TodoList = () => {
                     key = {todo.id}
                     name={todo.title}
                     id={todo.id}
+                    createdAt={todo.createdAt}
                     status={todo.status}
                     /></CSSTransition> : null
                 )}

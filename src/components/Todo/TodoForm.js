@@ -2,9 +2,10 @@ import React, {useContext, useState} from 'react'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
-import { TodoListContext } from '../contexts/todo-context'
-import { Action } from '../reducers/TodoReducer'
+import { TodoListContext } from '../../contexts/todo-context'
+import { Action } from '../../reducers/TodoReducer'
 import {v1 as uuid} from 'uuid'
+import { serverTimestamp } from '../../firebase/firebase.config'
 
 const TodoForm = () => {
 
@@ -12,20 +13,20 @@ const TodoForm = () => {
     const [title, setTitle] = useState('')
 
     const handleAddTodo = (event) => {
-        event.preventDefault()
-        
-        dispatch({
-          type: Action.ADD_TODO,
-          todo: {
-            title: title,
-            id: uuid(),
-            status: true,
-            createdAt: new Date(),
-          }
-        })
+      event.preventDefault()
+      
+      dispatch({
+        type: Action.ADD_TODO,
+        todo: {
+          title: title,
+          id: uuid(),
+          status: true,
+          createdAt: serverTimestamp,
+        }
+      })
 
-        setTitle('')
-    }
+      setTitle('')
+  }
 
     const handleChange = (event) => {
         setTitle(event.target.value)
@@ -46,7 +47,7 @@ const TodoForm = () => {
       aria-describedby="basic-addon2"
     />
     <InputGroup.Append>
-      <Button onClick={handleAddTodo} variant="outline-secondary">ADD!</Button>
+      <Button onClick={handleAddTodo} variant="outline-secondary">+</Button>
     </InputGroup.Append>
   </InputGroup></div>
     )
