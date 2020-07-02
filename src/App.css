@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Lora&display=swap');
+
+body {
+  margin: auto;
+  font-family:'Krona One', 'Lora';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+}
