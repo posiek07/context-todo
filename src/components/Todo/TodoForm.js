@@ -36,7 +36,7 @@ const TodoForm = () => {
 
     return(  
     <div>
-        <h2>Let's do something</h2>
+       
     <InputGroup className="mb-3">
     <FormControl
     onChange={handleChange}

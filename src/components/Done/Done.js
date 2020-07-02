@@ -1,21 +1,24 @@
 import React, { useContext } from "react";
 import { TodoListContext } from "../../contexts/todo-context";
-import TodoItem from "./TodoItem";
+import TodoItem from "../Todo/TodoItem";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import "./TodoList.css";
+import "../Todo/TodoList.css";
 
-const TodoList = () => {
-  const { todos } = useContext(TodoListContext);
+function Done() {
 
-  console.log(todos);
-  return (
-     
-    <div>
-    <h2 className="py-4">TODOS</h2>
+    const { todos } = useContext(TodoListContext);
+
+    return (
+        
+        <div>
+                  <h1>
+        Done list:
+        <br />
+      </h1>
       <div>
         <TransitionGroup className="todo-list">
           {todos.map((todo) =>
-            todo.status ? (
+            !todo.status ? (
               <CSSTransition key={todo.id} timeout={500} classNames="fade">
                 <TodoItem
                   key={todo.id}
@@ -28,14 +31,10 @@ const TodoList = () => {
             ) : null
           )}
         </TransitionGroup>
+        <div></div>
       </div>
+        </div>
+    )
+}
 
-      <br />
-      <br />
-      <br />
-
-    </div>
-  );
-};
-
-export default TodoList;
+export default Done

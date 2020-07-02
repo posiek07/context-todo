@@ -26,7 +26,6 @@ export const todoReducer = (state, action) => {
         case Action.STATUS_TODO: {
             const foundIndex= state.findIndex(todo => todo.id === action.id)
             let newArr = [...state]
-            debugger
             newArr[foundIndex] = {
                 ...newArr[foundIndex],
                 status: !newArr[foundIndex].status,

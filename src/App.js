@@ -7,12 +7,12 @@ import TodoListContextProvider from './contexts/todo-context'
 import Layout  from './Layout/Layout'
 import TodoPage from './components/Todo/TodoPage';
 import Calendar from './components/Calendar/Calendar';
-import MyNotes from './components/MyNotes/MyNotes';
+import Done from './components/Done/Done';
 function App() {
 
      let routes = ( <Switch>
-     <Route path='/mynotes' component= {MyNotes} />
-     <Route path='/calendar' component= {Calendar} />
+     <Route path='/done' exact component= {Done} />
+     <Route path='/calendar' exact component= {Calendar} />
      <Route path='/' exact component={TodoPage} /> </Switch>
      )
 
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <TodoListContextProvider>
-    <div className="App">
+    <div className="App d-block mx-auto w-75">
       <Layout />
       {routes}
     </div>
