@@ -21,8 +21,7 @@ function MyModal(props) {
         {props.children}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-          <Button onClick={props.onSave}>Save</Button>
+
         </Modal.Footer>
       </Modal>
     );

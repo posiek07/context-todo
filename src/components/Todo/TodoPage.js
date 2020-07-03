@@ -7,8 +7,9 @@ import TodoAdd from './TodoAdd'
 function TodoPage() {
     return (
         <div>
-        <TodoAdd />
+      <TodoAdd />
       <TodoList />
+      
         </div>
     )
 }

@@ -22,7 +22,9 @@ function Done() {
               <CSSTransition key={todo.id} timeout={500} classNames="fade">
                 <TodoItem
                   key={todo.id}
+                  description={todo.description}
                   name={todo.title}
+                  notes={todo.notes}
                   id={todo.id}
                   createdAt={todo.createdAt}
                   status={todo.status}

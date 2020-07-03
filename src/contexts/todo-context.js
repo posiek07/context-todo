@@ -9,6 +9,8 @@ const TodoListContextProvider = props => {
 
   const [todos, dispatch] = useReducer(todoReducer, [])
   const [modal, setModal] = useState(false)
+  const [editModal, setEditModal] = useState(false)
+
   useEffect(() => {
     console.log('TODOCONTEXT')
     getTasksRequest().then(res=>{
@@ -20,7 +22,7 @@ const TodoListContextProvider = props => {
   }, [])
 
   return (
-    <TodoListContext.Provider value={{todos, dispatch, modal, setModal}}>
+    <TodoListContext.Provider value={{todos, dispatch, modal, setModal, editModal, setEditModal}}>
       {props.children}
     </TodoListContext.Provider>
   )

@@ -1,29 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoListContext } from '../../contexts/todo-context'
+import { Action } from '../../reducers/TodoReducer'
+import useModal from '../../hooks/useModal'
 
-function TodoEdit() {
+
+  const TodoEdit = (props) => {
+    const { todos, dispatch, editModal, setEditModal } = useContext(TodoListContext);
+    
+  const toggleTodo = (id) => {
+    dispatch({
+      type: Action.EDIT_TODO,
+      id: id
+    });
+  };
+  console.log(props)
   return (
     <div>
-      <p>
-        <button
-          class="btn btn-primary"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseExample"
-          aria-expanded="false"
-          aria-controls="collapseExample"
-        >
-          Button with data-target
-        </button>
-      </p>
-      <div class="collapse in" id="collapseExample">
-        <div class="card card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-          labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-      </div>
+     {props.name}
     </div>
   );
 }
 
-export default TodoEdit;
+export default TodoEdit
