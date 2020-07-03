@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-// import Modal from '../Modal/Modal'
+import Modal from '../Modal/Modal'
 import { TodoListContext } from "../../contexts/todo-context";
 import { Action } from "../../reducers/TodoReducer";
 import TodoEdit from "./TodoEdit";
 import { serverTimestamp } from "../../firebase/firebase.config";
 import moment from "moment";
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 
 
 const TodoItem = (props) => {
