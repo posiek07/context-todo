@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import Button from 'react-bootstrap/Button'
 import MyModal from '../Modal/Modal'
 import TodoForm from './TodoForm'
+import { TodoListContext } from "../../contexts/todo-context";
+import Modal from 'react-modal'
 
 
 function TodoAdd() {
 
-    const [modalStatus, setModalStatus] = useState(false)
+  const { modal, setModal } = useContext(TodoListContext);
 
 
 
@@ -27,7 +29,7 @@ function TodoAdd() {
     `}
   </style>
 
-  <Button variant='flat' onClick={() => {setModalStatus(true)}}>Add Task</Button>
+  <Button variant='flat' onClick={() => {setModal(true)}}>Add Task</Button>
   </div>
     )
 
@@ -38,7 +40,7 @@ function TodoAdd() {
             <h2 className="row-cols-8 py-3">Let's do something!</h2>
             {customButton}
     
-            <MyModal show={modalStatus} onHide={() => setModalStatus(false)}><TodoForm/></MyModal>
+            <Modal show={modal} onHide={() => setModal(false)}><TodoForm/></Modal>
             <hr class="w-100 mx-auto mt-4 mb-5 border-danger"></hr>
         </div>
     )

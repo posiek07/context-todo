@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useEffect} from 'react';
+import React, {createContext, useReducer, useEffect, useState} from 'react';
 import { todoReducer, Action } from '../reducers/TodoReducer'
 import { getTasksRequest } from '../firebase/Firebase';
 
@@ -8,7 +8,7 @@ const TodoListContextProvider = props => {
 
 
   const [todos, dispatch] = useReducer(todoReducer, [])
- 
+  const [modal, setModal] = useState(false)
   useEffect(() => {
     console.log('TODOCONTEXT')
     getTasksRequest().then(res=>{
@@ -20,7 +20,7 @@ const TodoListContextProvider = props => {
   }, [])
 
   return (
-    <TodoListContext.Provider value={{todos, dispatch}}>
+    <TodoListContext.Provider value={{todos, dispatch, modal, setModal}}>
       {props.children}
     </TodoListContext.Provider>
   )

@@ -1,14 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
+// import Modal from '../Modal/Modal'
 import { TodoListContext } from "../../contexts/todo-context";
 import { Action } from "../../reducers/TodoReducer";
 import TodoEdit from "./TodoEdit";
 import { serverTimestamp } from "../../firebase/firebase.config";
 import moment from "moment";
+import Modal from 'react-modal'
+
 
 const TodoItem = (props) => {
-  const { todos, dispatch } = useContext(TodoListContext);
-  const [edit, setEdit] = useState(false);
+  const { todos, dispatch, modal, setModal } = useContext(TodoListContext);
+  
+
 
   useEffect(() => {
     console.log("TodoItem rendered");
@@ -54,7 +58,7 @@ const TodoItem = (props) => {
           <Button className="col-4 m-0" onClick={() => toggleTodo(props.id)} variant="success" block>
             Done
           </Button>
-          <Button className ="col-4 m-0" onClick={() => setEdit(true)} variant="primary" block>
+          <Button className ="col-4 m-0" onClick={() => setModal(true)} variant="primary" block>
             Edit
           </Button>
           <Button className="col-4 m-0" onClick={() => deleteTodo(props.id)} variant="danger" block>
@@ -72,6 +76,7 @@ const TodoItem = (props) => {
       </div>
       )}
     </div>
+    <Modal show={modal} onHide={() => setModal(false)}><TodoEdit /></Modal>
     </div>
     </div>
   );
