@@ -20,6 +20,8 @@ const TodoList = () => {
                 <TodoItem
                   key={todo.id}
                   name={todo.title}
+                  description={todo.description}
+                  notes={todo.notes}
                   id={todo.id}
                   createdAt={todo.createdAt}
                   status={todo.status}

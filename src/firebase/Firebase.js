@@ -9,6 +9,8 @@ export const addTaskRequest = async (todo) => {
     return await db.collection(collection)
         .doc(todo.id).set({
             title: todo.title,
+            description: todo.description,
+            notes: todo.notes,
             createdAt: todo.createdAt,
             status: todo.status,
             id: todo.id
@@ -21,10 +23,12 @@ export const getTasksRequest = async () => {
         let todos = [];
 res.docs.map(todo => {
             let data = todo.data();
-todos.push({
+            todos.push({
                 id: data.id,
                 status: data.status,
                 title: data.title,
+                description: data.description,
+                notes: data.notes,
                 createdAt: data.createdAt
             })
         })
@@ -32,9 +36,9 @@ todos.push({
     })
 }
 
-export const changeStatusRequest = async (id, todo) => {
+export const changeStatusRequest = async (todo) => {
     return db.collection(collection)
-        .doc(id)
+        .doc(todo.id)
         .set(todo)
 }
 
@@ -47,4 +51,10 @@ export const removeTaskRequest = async (id) => {
             .catch(function(error){
                 console.error('Error removing document: ', error)
             })
+}
+
+export const editTaskRequest = async (todo) => {
+    return await db.collection(collection)
+        .doc(todo.id)
+        .update(todo)
 }
