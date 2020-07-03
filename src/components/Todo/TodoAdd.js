@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import Button from 'react-bootstrap/Button'
-import MyModal from '../Modal/Modal'
+import Modal from '../Modal/Modal'
 import TodoForm from './TodoForm'
 import { TodoListContext } from "../../contexts/todo-context";
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 
 
 function TodoAdd() {

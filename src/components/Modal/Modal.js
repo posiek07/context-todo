@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-import ReactModal from 'react-modal'
+import Modal from 'react-bootstrap/Modal'
 
 function MyModal(props) {
 
