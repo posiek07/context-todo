@@ -19,7 +19,7 @@ const TodoList = () => {
               <CSSTransition key={todo.id} timeout={500} classNames="fade">
                 <TodoItem
                   key={todo.id}
-                  name={todo.title}
+                  title={todo.title}
                   description={todo.description}
                   notes={todo.notes}
                   id={todo.id}

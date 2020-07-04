@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal'
 
 function MyModal(props) {
 
-
+console.log(props)
     return (
       <Modal
         {...props}
@@ -14,14 +14,12 @@ function MyModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
         {props.children}
         </Modal.Body>
         <Modal.Footer>
-
         </Modal.Footer>
       </Modal>
     );

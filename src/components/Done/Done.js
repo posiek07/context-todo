@@ -23,7 +23,7 @@ function Done() {
                 <TodoItem
                   key={todo.id}
                   description={todo.description}
-                  name={todo.title}
+                  title={todo.title}
                   notes={todo.notes}
                   id={todo.id}
                   createdAt={todo.createdAt}
