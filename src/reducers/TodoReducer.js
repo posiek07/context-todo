@@ -28,17 +28,19 @@ export const todoReducer = (state, action) => {
       return state.filter((todo) => todo.id !== action.id);
     }
     case Action.EDIT_TODO: {
-      const foundIndex = state.findIndex((todo) => todo.id === action.id);
+      const foundIndex = state.findIndex((todo) => todo.id === action.todo.id);
+      console.log(action.todo)
       let newArr = [...state];
       newArr[foundIndex] = {
         ...newArr[foundIndex],
-        status: !newArr[foundIndex].status,
-        createdAt: action.timestamp,
-        description: newArr[foundIndex].description,
-        title: newArr[foundIndex].title,
-        notes: newArr[foundIndex].notes
+        status: action.todo.status,
+        createdAt: action.todo.createdAt,
+        description: action.todo.description,
+        title: action.todo.title,
+        notes:action.todo.notes
       };
-      changeStatusRequest(newArr[foundIndex]);
+      console.log(newArr)
+      editTaskRequest(newArr[foundIndex]);
       return newArr;
     }
     case Action.STATUS_TODO: {
@@ -50,7 +52,7 @@ export const todoReducer = (state, action) => {
         createdAt: action.timestamp,
       };
       console.log(newArr);
-      editTaskRequest(newArr[foundIndex]);
+      changeStatusRequest(newArr[foundIndex]);
       return newArr;
     }
     default:

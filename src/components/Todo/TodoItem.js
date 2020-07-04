@@ -12,7 +12,9 @@ import useModal from '../../hooks/useModal'
 const TodoItem = (props) => {
   const { todos, dispatch, editModal, setEditModal } = useContext(TodoListContext);
   const {isShowing, toggle} = useModal()
-
+  if(editModal === true) {
+    toggle()
+  }
 
   useEffect(() => {
     console.log("TodoItem rendered");
@@ -45,7 +47,7 @@ const TodoItem = (props) => {
       <div className="row p-1 m-0">
       <div className="col-7">{date}</div><div className="col-5 text-right">add note +</div></div>
       <div className ="p-3">
-        <h3>{props.name}</h3>
+        <h3>{props.title}</h3>
       </div>
       <div className="row m-3">
         <p>{props.description}</p>
@@ -76,7 +78,7 @@ const TodoItem = (props) => {
       </div>
       )}
     </div>
-    <Modal show={isShowing} onHide={() => toggle()}><TodoEdit  {...props} /></Modal>
+    <Modal show={isShowing} onHide={() => toggle()}><TodoEdit show={isShowing}  {...props} /></Modal>
     </div>
     </div>
   );
