@@ -1,12 +1,12 @@
-import React from 'react'
-import Navbar from '../components/Navigation/Navbar'
+import React from "react";
+import Navbar from "../components/Navigation/Navbar";
 
 function Layout() {
-    return (
-        <div>
-        <Navbar />
-        </div>
-    )
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 }
 
-export default Layout
+export default Layout;

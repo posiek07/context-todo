@@ -1,17 +1,14 @@
-import React from 'react'
-import TodoForm from './TodoForm'
-import TodoList from './TodoList'
-import TodoAdd from './TodoAdd'
-
+import React from "react";
+import TodoList from "./TodoList";
+import TodoAdd from "./TodoAdd";
 
 function TodoPage() {
-    return (
-        <div>
+  return (
+    <div>
       <TodoAdd />
       <TodoList />
-      
-        </div>
-    )
+    </div>
+  );
 }
 
-export default TodoPage
+export default TodoPage;
