@@ -4,13 +4,13 @@ import {
   changeStatusRequest,
   editTaskRequest,
 } from "../firebase/Firebase";
-import { serverTimestamp } from "../firebase/firebase.config";
 
 export const Action = {
   ADD_TODO: "add-todo",
   REMOVE_TODO: "remove-todo",
   STATUS_TODO: "status-todo",
   GET_ALL_TODOS: "get-all-todos",
+  ADD_TODO_NOTE: "add-todo-note",
 };
 
 export const todoReducer = (state, action) => {
@@ -23,13 +23,11 @@ export const todoReducer = (state, action) => {
       return [...state, action.todo];
     }
     case Action.REMOVE_TODO: {
-      console.log(action);
       removeTaskRequest(action.id);
       return state.filter((todo) => todo.id !== action.id);
     }
     case Action.EDIT_TODO: {
       const foundIndex = state.findIndex((todo) => todo.id === action.todo.id);
-      console.log(action.todo)
       let newArr = [...state];
       newArr[foundIndex] = {
         ...newArr[foundIndex],
@@ -37,9 +35,8 @@ export const todoReducer = (state, action) => {
         createdAt: action.todo.createdAt,
         description: action.todo.description,
         title: action.todo.title,
-        notes:action.todo.notes
+        notes: action.todo.notes,
       };
-      console.log(newArr)
       editTaskRequest(newArr[foundIndex]);
       return newArr;
     }
@@ -51,10 +48,21 @@ export const todoReducer = (state, action) => {
         status: !newArr[foundIndex].status,
         createdAt: action.timestamp,
       };
-      console.log(newArr);
       changeStatusRequest(newArr[foundIndex]);
       return newArr;
     }
+    case Action.ADD_TODO_NOTE: {
+      const foundIndex = state.findIndex((todo) => todo.id === action.id);
+      let newArr = [...state];
+      newArr[foundIndex] = {
+        ...newArr[foundIndex],
+        notes: action.notes,
+        createdAt: action.timestamp,
+      };
+      changeStatusRequest(newArr[foundIndex]);
+      return newArr;
+    }
+
     default:
       return state;
   }

@@ -7,11 +7,9 @@ import "./TodoList.css";
 const TodoList = () => {
   const { todos } = useContext(TodoListContext);
 
-  console.log(todos);
   return (
-     
     <div>
-    <h2 className="py-4">TODOS</h2>
+      <h2 className="py-4">TODOS</h2>
       <div>
         <TransitionGroup className="todo-list">
           {todos.map((todo) =>
@@ -35,7 +33,6 @@ const TodoList = () => {
       <br />
       <br />
       <br />
-
     </div>
   );
 };

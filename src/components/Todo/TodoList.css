@@ -1,31 +1,30 @@
 .fade-enter {
-    opacity: 0;
+  opacity: 0;
 }
 
 .fade-enter-active {
-    opacity: 1;
-    
-    animation: new-item-animation .3s linear forwards;
-    
+  opacity: 1;
+
+  animation: new-item-animation 0.3s linear forwards;
 }
 
 .fade-exit {
-    opacity: 1;
+  opacity: 1;
 }
 
 .fade-exit-active {
-    opacity: 0;
-    transition: opacity 0.3s ease-in
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
 }
 
 @keyframes new-item-animation {
-    from {
-        opacity: 0;
-        transform: translateY(-400px);
-}
+  from {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
 
-    to {
-        opacity: 1;
-        transform : translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

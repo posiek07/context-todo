@@ -1,10 +1,8 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-function MyModal(props) {
+const MyModal = (props) => {
 
-console.log(props)
     return (
       <Modal
         {...props}
