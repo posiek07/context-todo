@@ -5,12 +5,15 @@ import Form from "react-bootstrap/Form";
 import { serverTimestamp } from "../../firebase/firebase.config";
 import Button from "react-bootstrap/Button";
 import { v1 as uuid } from "uuid";
+import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 
 const TodoEdit = (props) => {
   const { dispatch } = useContext(TodoListContext);
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [note, setNote] = useState(props.notes.note);
+  const [datePicker, setDatePicker] = useState([props.start, props.end])
+  console.log(props.start)
 
   const handleEditTodo = (event) => {
     event.preventDefault();
@@ -19,6 +22,8 @@ const TodoEdit = (props) => {
       todo: {
         title: title,
         description: description,
+        start: props.start,
+        end: props.end,
         id: props.id,
         status: props.status,
         createdAt: serverTimestamp,
@@ -42,6 +47,9 @@ const TodoEdit = (props) => {
   const handleNote = (event) => {
     setNote(event.target.value);
   };
+
+  const changeDate = date => setDatePicker(date)
+
 
   return (
     <div>
@@ -76,10 +84,12 @@ const TodoEdit = (props) => {
             placeholder="Description"
           />
         </Form.Group>
-
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+        
+        Change? <br></br>
+        <DateRangePicker
+          onChange={changeDate}
+          value={datePicker}
+        />
         <Button onClick={handleEditTodo} variant="primary" type="submit">
           Submit
         </Button>

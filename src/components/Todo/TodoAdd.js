@@ -43,7 +43,7 @@ function TodoAdd() {
       <Modal show={modal} onHide={() => setModal(false)}>
         <TodoForm />
       </Modal>
-      <hr class="w-100 mx-auto mt-4 mb-5 border-danger"></hr>
+      <hr className="w-100 mx-auto mt-4 mb-5 border-danger"></hr>
     </div>
   );
 }

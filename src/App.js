@@ -11,9 +11,10 @@ import Done from "./components/Done/Done";
 function App() {
   let routes = (
     <Switch>
-      <Route path="/done" exact component={Done} />
-      <Route path="/calendar" exact component={Calendar} />
-      <Route path="/" exact component={TodoPage} />{" "}
+       <Route path="/" exact component={TodoPage} />
+      <Route path="/done" component={Done} />
+      <Route path="/calendar" component={Calendar} />
+     
     </Switch>
   );
 

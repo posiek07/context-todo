@@ -5,12 +5,13 @@ import { TodoListContext } from "../../contexts/todo-context";
 import { Action } from "../../reducers/TodoReducer";
 import { v1 as uuid } from "uuid";
 import { serverTimestamp } from "../../firebase/firebase.config";
+import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 
 const TodoForm = () => {
   const { dispatch, setModal } = useContext(TodoListContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+  const [datePicker, setDatePicker] = useState([new Date(), new Date()])
   const handleAddTodo = (event) => {
     event.preventDefault();
 
@@ -18,6 +19,8 @@ const TodoForm = () => {
       type: Action.ADD_TODO,
       todo: {
         title: title,
+        start: datePicker[0],
+        end: datePicker[1],
         description: description,
         id: uuid(),
         status: true,
@@ -40,6 +43,8 @@ const TodoForm = () => {
   const handleDescrpition = (event) => {
     setDescription(event.target.value);
   };
+
+  const changeDate = date => setDatePicker(date)
 
   return (
     <div>
@@ -64,9 +69,11 @@ const TodoForm = () => {
             placeholder="Description"
           />
         </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+        When? <br></br>
+        <DateRangePicker
+          onChange={changeDate}
+          value={datePicker}
+        />
         <Button onClick={handleAddTodo} variant="primary" type="submit">
           Submit
         </Button>
