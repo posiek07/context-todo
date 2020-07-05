@@ -1,10 +1,12 @@
-import { db, serverTimestamp } from "./firebase.config";
+import { db } from "./firebase.config";
 
 const collection = "collection";
 
 export const addTaskRequest = async (todo) => {
   return await db.collection(collection).doc(todo.id).set({
     title: todo.title,
+    start: todo.start,
+    end: todo.end,
     description: todo.description,
     notes: todo.notes,
     createdAt: todo.createdAt,
@@ -25,6 +27,8 @@ export const getTasksRequest = async () => {
           id: data.id,
           status: data.status,
           title: data.title,
+          start: new Date(data.start.seconds*1000),
+          end: new Date(data.end.seconds*1000),
           description: data.description,
           notes: data.notes,
           createdAt: data.createdAt,
