@@ -14,13 +14,14 @@ function App() {
        <Route path="/" exact component={TodoPage} />
       <Route path="/done" component={Done} />
       <Route path="/calendar" component={Calendar} />
+      <Route render={() => <h1 style={{textAlign: "center"}}>NOT FOUND!!!</h1>} />
      
     </Switch>
   );
 
   return (
     <TodoListContextProvider>
-      <div className="App d-block mx-auto w-75">
+      <div className="App container mx-auto w-lg-75">
         <Layout />
         {routes}
       </div>

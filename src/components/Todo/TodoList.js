@@ -23,6 +23,8 @@ const TodoList = () => {
                   id={todo.id}
                   createdAt={todo.createdAt}
                   status={todo.status}
+                  start={todo.start}
+                  end={todo.end}
                 />
               </CSSTransition>
             ) : null

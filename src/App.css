@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Lora&display=swap');
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
 body {
+
   margin: auto;
   font-family:'Krona One', 'Lora';
   -webkit-font-smoothing: antialiased;
@@ -9,4 +16,26 @@ body {
     justify-content: center;
     align-self: center;
     justify-self: center;
+}
+
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
 }

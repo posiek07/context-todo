@@ -16,10 +16,7 @@ const TodoItem = (props) => {
   const [isAddNote, setAddNote] = useState(false);
 
   useEffect(() => {
-    console.log("TodoItem rendered");
-    return () => {
-      console.log("TodoItem Unmount");
-    };
+
   }, []);
 
   const deleteTodo = (id) => {
@@ -38,19 +35,20 @@ const TodoItem = (props) => {
   };
 
   const addTodoNote = (id, note) => {
+    const noteId = props.notes.id ? props.notes.id : uuid()
     dispatch({
       type: Action.ADD_TODO_NOTE,
       id: id,
       notes: {
         note: note,
-        id: uuid(),
+        id: noteId,
       },
       timestamp: serverTimestamp,
     });
   };
 
   const handleDate = props.createdAt.toDate();
-  const date = moment(handleDate).format("dddd, MMMM Do YYYY, h:mm:ss a");
+  const date = moment(handleDate).format("dddd, MMMM Do YYYY, h:mm a");
 
   const todoAdd = isAddNote ? (
     <TodoAddNote
@@ -66,17 +64,17 @@ const TodoItem = (props) => {
   );
 
   return (
-    <div>
-      <div className="container m-0 p-3 bg-light">
+    <div className="h6 small">
+      <div className="container m-0 p-1 bg-light">
         <div className="row p-1 m-0">
-          <div className="col-7">{date}</div>
-          <div className="col-5 text-right">{todoAdd}</div>
+          <div className="col-7 h6 small">{date}</div>
+          <div className="col-5 h4 small text-right">{todoAdd}</div>
         </div>
         <div className="p-3">
-          <h3>{props.title}</h3>
+          <h5>{props.title}</h5>
         </div>
-        <div className="row m-3">
-          <p>{props.description}</p>
+        <div className="row flex-auto m-3 h6 small">
+          <p style={{wordWrap: "break-word"}}>{props.description}</p>
         </div>
         {props.notes.note ? (
           <div>
@@ -88,7 +86,7 @@ const TodoItem = (props) => {
           {props.status ? (
             <div className="row p-2">
               <Button
-                className="col-4 m-0"
+                className="col-4 m-0 "
                 onClick={() => toggleTodo(props.id)}
                 variant="success"
                 block

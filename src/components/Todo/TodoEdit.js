@@ -13,23 +13,24 @@ const TodoEdit = (props) => {
   const [description, setDescription] = useState(props.description);
   const [note, setNote] = useState(props.notes.note);
   const [datePicker, setDatePicker] = useState([props.start, props.end])
-  console.log(props.start)
 
   const handleEditTodo = (event) => {
+    const noteId = props.notes.id ? props.notes.id : uuid()
+
     event.preventDefault();
     dispatch({
       type: Action.EDIT_TODO,
       todo: {
         title: title,
         description: description,
-        start: props.start,
-        end: props.end,
+        start: datePicker[0],
+        end: datePicker[1],
         id: props.id,
         status: props.status,
         createdAt: serverTimestamp,
         notes: {
           note: note,
-          id: uuid(),
+          id: noteId,
         },
       },
     });
@@ -48,7 +49,9 @@ const TodoEdit = (props) => {
     setNote(event.target.value);
   };
 
-  const changeDate = date => setDatePicker(date)
+  const changeDate = date => {
+    setDatePicker(date)
+  }
 
 
   return (
@@ -70,29 +73,34 @@ const TodoEdit = (props) => {
           <Form.Control
             onChange={handleDescrpition}
             defaultValue={props.description}
-            type="textarea"
+            as="textarea"
             placeholder="Description"
+            rows="4"
           />
         </Form.Group>
 
-        <Form.Group controlId="formDescription">
+        <Form.Group controlId="formNotes">
           <Form.Label>Notes</Form.Label>
           <Form.Control
             onChange={handleNote}
             defaultValue={props.notes.note ? props.notes.note : null}
-            type="textarea"
-            placeholder="Description"
+            as="textarea"
+            placeholder="Notes"
+            rows="2"
           />
         </Form.Group>
-        
+        <div className="container p-2 row justify-content-start">
         Change? <br></br>
-        <DateRangePicker
+        <div className="col-9"><DateRangePicker
           onChange={changeDate}
           value={datePicker}
-        />
+        /></div>
+        <div className="col-1 p-3">
         <Button onClick={handleEditTodo} variant="primary" type="submit">
           Submit
         </Button>
+        </div>
+        </div>
       </Form>
     </div>
   );

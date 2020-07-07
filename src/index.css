@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Lora&display=swap');
 
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
 body {
   margin: 0;
   font-family:'Krona One', 'Lora';
@@ -10,3 +18,4 @@ body {
   align-self: center;
   justify-self: center;
 }
+

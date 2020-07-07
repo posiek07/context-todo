@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css"
+
 const Navbar = () => {
   const  [isDropdown, setIsDropdown] = useState("collapse navbar-collapse mx-3")
 
@@ -11,7 +11,7 @@ const Navbar = () => {
   
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <NavLink exact className="navbar-brand" to="/">
+      <NavLink exact className="navbar-brand" to="/" style={{color: "#dc3545"}}>
         ToDo APP
       </NavLink>
       <button
