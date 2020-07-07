@@ -52,6 +52,7 @@ const TodoForm = () => {
         <Form.Group controlId="formTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
+            required
             onChange={handleChange}
             value={title}
             type="text"
@@ -65,8 +66,9 @@ const TodoForm = () => {
           <Form.Control
             onChange={handleDescrpition}
             value={description}
-            type="textarea"
+            as="textarea"
             placeholder="Description"
+            rows="4"
           />
         </Form.Group>
         When? <br></br>

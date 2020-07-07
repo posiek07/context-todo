@@ -36,6 +36,8 @@ export const todoReducer = (state, action) => {
         description: action.todo.description,
         title: action.todo.title,
         notes: action.todo.notes,
+        start: action.todo.start,
+        end: action.todo.end
       };
       editTaskRequest(newArr[foundIndex]);
       return newArr;

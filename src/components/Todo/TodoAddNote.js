@@ -9,7 +9,6 @@ const TodoAddNote = (props) => {
 
   const handleNote = (event) => {
     setNote(event.target.value);
-    console.log(event)
   };
 
   const submitNote = (event) => {
@@ -20,9 +19,6 @@ const TodoAddNote = (props) => {
 
   return (
     <div>
-      {/* <form onSubmit={submitNote}>
-        <input defaultValue={props.value} onChange={handleNote} />
-      </form> */}
     <Form onSubmit={submitNote}>
     <InputGroup className="mb-0">
     <FormControl defaultValue={props.value} onChange={handleNote} aria-describedby="basic-addon1" />

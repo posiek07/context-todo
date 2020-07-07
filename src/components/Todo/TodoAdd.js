@@ -13,8 +13,9 @@ function TodoAdd() {
       <style type="text/css">
         {`
     .btn-flat {
-      background-color: purple;
+      background-color: #dc3545;
       color: white;
+      border-radius: 20px
     }
 
     .btn-xxl {
