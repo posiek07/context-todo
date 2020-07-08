@@ -5,7 +5,7 @@ import FormControl from "react-bootstrap/FormControl"
 import Form from "react-bootstrap/Form";
 
 const TodoAddNote = (props) => {
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState(props.value);
 
   const handleNote = (event) => {
     setNote(event.target.value);
