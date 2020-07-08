@@ -5,7 +5,7 @@ const Navbar = () => {
   const  [isDropdown, setIsDropdown] = useState("collapse navbar-collapse mx-3")
 
   const setDropdown = () => {
-    (isDropdown === "collapse navbar-collapse mx-3") ? setIsDropdown("collapse show navbar-collapse mx-3") : setIsDropdown("collapse navbar-collapse mx-3")
+    (isDropdown === "collapse navbar-collapse mx-3") ? setIsDropdown("collapse show navbar-collapse mx-3 animate slideIn") : setIsDropdown("collapse navbar-collapse mx-3")
   }
 
   

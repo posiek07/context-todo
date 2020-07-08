@@ -22,20 +22,28 @@ html {
   font-size: 1rem;
 }
 
-@include media-breakpoint-up(sm) {
-  html {
-    font-size: 1.2rem;
-  }
+
+.slide-enter,
+.slide-exit {
+  opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
 }
 
-@include media-breakpoint-up(md) {
-  html {
-    font-size: 1.4rem;
-  }
+.slide-enter {
+  transform: opacity;
+  opacity: 0
 }
 
-@include media-breakpoint-up(lg) {
-  html {
-    font-size: 1.6rem;
-  }
+.slide-enter.slide-enter-active {
+  transform: opacity(0%);
+}
+
+.slide-exit {
+  transform: opacity(0%);
+}
+
+.slide-exit-active {
+  transform: opacity(-100%);
 }

@@ -8,16 +8,28 @@ import Layout from "./Layout/Layout";
 import TodoPage from "./components/Todo/TodoPage";
 import Calendar from "./components/Calendar/Calendar";
 import Done from "./components/Done/Done";
-function App() {
+import posed, { PoseGroup } from 'react-pose'
+
+const RouteContainer = posed.div({
+  enter: { opacity: 1, delay: 300, beforeChildren: true },
+  exit: { opacity: 0 }
+});
+
+const App = withRouter(({location}) => {
+  console.log(location)
   let routes = (
-    <Switch>
-       <Route path="/" exact component={TodoPage} />
+
+      <PoseGroup>
+      <RouteContainer key={location.pathname}>
+      <Switch location={location}>
+      <Route path="/" exact component={TodoPage} />
       <Route path="/done" component={Done} />
       <Route path="/calendar" component={Calendar} />
       <Route render={() => <h1 style={{textAlign: "center"}}>NOT FOUND!!!</h1>} />
-     
-    </Switch>
-  );
+      </Switch>
+    </RouteContainer>
+    </PoseGroup> 
+     );
 
   return (
     <TodoListContextProvider>
@@ -27,6 +39,6 @@ function App() {
       </div>
     </TodoListContextProvider>
   );
-}
+})
 
-export default withRouter(App);
+export default App;
