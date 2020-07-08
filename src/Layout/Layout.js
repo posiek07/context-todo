@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/Navigation/Navbar";
+import Navbar2 from "../components/Navigation/Navbar2";
 
 function Layout() {
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
     </div>
   );
 }
