@@ -16,7 +16,6 @@ const RouteContainer = posed.div({
 });
 
 const App = withRouter(({location}) => {
-  console.log(location)
   let routes = (
 
       <PoseGroup>
@@ -27,8 +26,8 @@ const App = withRouter(({location}) => {
       <Route path="/calendar" component={Calendar} />
       <Route render={() => <h1 style={{textAlign: "center"}}>NOT FOUND!!!</h1>} />
       </Switch>
-    </RouteContainer>
-    </PoseGroup> 
+      </RouteContainer>
+      </PoseGroup> 
      );
 
   return (
